@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Маркетплейс коммерческой недвижимости - демо</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f3ef;--w:#fff;--ink:#16181a;--mut:#62676c;--line:#e2e0da;--acc:#d9481c;--ok:#1f8a55;--m:clamp(14px,2vw,28px);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.5 "Golos Text",system-ui,sans-serif;overflow-x:hidden}
+header{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px var(--m);background:var(--w);position:sticky;top:0;z-index:20}
+.logo{font:700 20px "Golos Text";letter-spacing:-.03em}.logo b{color:var(--acc)}
+.hd{display:flex;gap:10px;align-items:center}
+.btn{background:var(--ink);color:#fff;border:0;padding:11px 16px;font:600 15px "Golos Text";cursor:pointer;border-radius:10px;text-decoration:none;transition:background .2s}
+.btn:hover{background:var(--acc)}.btn.l{background:var(--bg);color:var(--ink)}
+.hero{padding:clamp(28px,4vw,48px) var(--m) 18px}
+h1{font:700 clamp(28px,4vw,52px)/1.02 "Golos Text";letter-spacing:-.04em;max-width:20ch}
+.lead{color:var(--mut);margin-top:10px;max-width:60ch}
+.types{display:flex;gap:6px;flex-wrap:wrap;margin-top:22px}
+.types button{background:var(--w);border:0;padding:10px 14px;border-radius:99px;font:600 15px "Golos Text";cursor:pointer;transition:background .2s,color .2s}
+.types button.on{background:var(--ink);color:#fff}
+.deal{display:inline-flex;background:var(--w);border-radius:99px;padding:3px;margin-left:8px}
+.deal button{border:0;background:none;padding:8px 14px;border-radius:99px;font:600 14px "Golos Text";cursor:pointer}.deal button.on{background:var(--acc);color:#fff}
+.app{display:grid;grid-template-columns:300px minmax(0,1fr) minmax(0,1.05fr);gap:14px;padding:0 var(--m) 40px;align-items:start}
+.flt{background:var(--w);border-radius:16px;padding:18px;display:grid;gap:16px;position:sticky;top:76px}
+.flt h4{font:600 13px "Golos Text";color:var(--mut);margin-bottom:6px}
+.flt input[type=range]{width:100%;accent-color:var(--acc)}
+.flt .v{font-weight:600}
+.spec{display:grid;gap:8px}
+.spec label{display:flex;gap:8px;align-items:center;font-size:15px;cursor:pointer}
+.spec select{width:100%;padding:9px;border:1px solid var(--line);border-radius:8px;font:500 15px "Golos Text"}
+.chk{display:flex;gap:8px;align-items:center;font-size:15px}
+.save{background:var(--bg);border-radius:10px;padding:10px;font-size:14px;color:var(--mut)}
+.list{display:grid;gap:10px}
+.cnt{font-size:14px;color:var(--mut)}
+.card{background:var(--w);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:150px 1fr;cursor:pointer;transition:transform .25s var(--ease),box-shadow .25s;border:2px solid transparent}
+.card:hover,.card.on{border-color:var(--acc)}
+.card .ph{background:#d9d6cf;position:relative}
+.card .ph svg{width:100%;height:100%;display:block}
+.badge{position:absolute;left:8px;top:8px;background:var(--ok);color:#fff;font:600 11px "Golos Text";padding:3px 7px;border-radius:6px}
+.card .bd{padding:12px 14px}
+.card b{display:block;font-size:16px}
+.card .pr{font:700 18px "Golos Text";margin-top:4px}
+.card small{color:var(--mut);font-size:13px;display:block}
+.tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}.tags span{background:var(--bg);padding:3px 7px;border-radius:6px;font-size:12px}
+.map{background:#e8e6df;border-radius:16px;position:sticky;top:76px;height:calc(100svh - 96px);min-height:460px;overflow:hidden}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.pin{cursor:pointer;transition:transform .25s}
+.pin circle{transition:r .25s,fill .25s}
+.pin.on circle{fill:var(--acc)}
+.metro{font:600 11px "Golos Text";fill:#1b4fa0}
+.obj{position:absolute;left:12px;right:12px;bottom:12px;background:var(--w);border-radius:14px;padding:16px;display:none;box-shadow:0 18px 40px -18px rgba(0,0,0,.35)}
+.obj.show{display:block;animation:up .35s var(--ease)}
+@keyframes up{from{opacity:0;transform:translateY(12px)}}
+.obj h3{font:700 19px/1.2 "Golos Text"}
+.obj .row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.obj .row div{background:var(--bg);border-radius:10px;padding:8px}.obj .row span{display:block;font-size:12px;color:var(--mut)}
+.obj .act{display:flex;gap:8px}
+.notes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:0 var(--m) 50px}
+.notes div{background:var(--w);border-radius:16px;padding:20px}.notes b{display:block;margin-bottom:6px}.notes p{color:var(--mut);font-size:15px}
+@media(max-width:1100px){.app{grid-template-columns:260px 1fr}.map{grid-column:1/-1;position:relative;top:0;height:420px}}
+@media(max-width:700px){.app{grid-template-columns:1fr}.flt{position:static}.card{grid-template-columns:110px 1fr}.notes{grid-template-columns:1fr}.hd .l{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="logo">Ком<b>·</b>Плейс</div><div class="hd"><a class="btn l" href="#">Брокерам</a><a class="btn" href="#">Разместить объект</a></div></header>
+<div class="hero">
+ <h1>Коммерческая недвижимость Нижнего в одном окне</h1>
+ <p class="lead">Демо поиска: выберите тип - фильтры меняются под него (у склада потолки и пандус, у офиса класс и парковка, у участка категория земли). Цена за м² и за месяц считается автоматически.</p>
+ <div class="types" id="types"></div>
+</div>
+<div class="app">
+ <aside class="flt" id="flt"></aside>
+ <div><div class="cnt" id="cnt"></div><div class="list" id="list"></div></div>
+ <div class="map" id="map"><svg viewBox="0 0 600 700" id="msvg" aria-label="Карта объектов"></svg><div class="obj" id="obj"></div></div>
+</div>
+<div class="notes">
+ <div><b>Разные анкеты под тип</b><p>Поля и фильтры задаются схемой для каждого типа объекта - новые типы и города добавляются без переписывания.</p></div>
+ <div><b>Карта и метро</b><p>В рабочей версии - Яндекс Карты с кластеризацией, поиском по области и слоем метро и остановок.</p></div>
+ <div><b>Заявка и чат</b><p>Заявка на просмотр со временем, чат внутри площадки, контакты - после первого сообщения.</p></div>
+</div>
+<script>
+const TYPES={
+ 'Офисы':{f:[['Класс здания',['A','B+','B','C']],['Парковка',null]],img:0},
+ 'Склады':{f:[['Высота потолков',['от 6 м','от 8 м','от 10 м']],['Пандус',null],['Ж/д ветка',null]],img:1},
+ 'Торговые':{f:[['Формат',['Стрит-ритейл','ТЦ']],['Отдельный вход',null]],img:2},
+ 'Участки':{f:[['Категория земли',['Земли населённых пунктов','Промназначения']],['Коммуникации',null]],img:3},
+ 'Общепит':{f:[['Вытяжка',null],['Мощность, кВт',['от 30','от 50','от 100']]],img:2}
+};
+const DIST=['Нижегородский','Канавинский','Советский','Автозаводский','Приокский'];
+const OBJ=[];let id=0;
+const names={'Офисы':['Офис у метро','Офис в БЦ','Кабинет с ремонтом'],'Склады':['Тёплый склад','Склад класса A','Производственно-складской'],'Торговые':['Помещение на 1-й линии','Магазин в ТЦ','Стрит-ритейл с витриной'],'Участки':['Участок под АЗС','Участок промназначения','Участок у трассы'],'Общепит':['Помещение под кафе','Кофейня у вуза','Ресторан с вытяжкой']};
+Object.keys(TYPES).forEach(t=>{for(let i=0;i<5;i++){const area=t==='Участки'?800+i*700:t==='Склады'?400+i*300:40+i*35;const m2=t==='Участки'?120+i*30:t==='Склады'?450+i*40:900+i*180;OBJ.push({id:id++,t,n:names[t][i%3],area,m2,deal:i%3?'Аренда':'Продажа',d:DIST[(i+t.length)%5],ver:i%2===0,x:80+((id*97)%440),y:120+((id*61)%460),metro:4+i*3})}});
+let st={t:'Офисы',deal:'Аренда',max:3000,minA:0,ver:false,sel:null};
+const $=i=>document.getElementById(i);
+$('types').innerHTML=Object.keys(TYPES).map(t=>`<button data-t="${t}" class="${t===st.t?'on':''}">${t}</button>`).join('')+`<span class="deal" id="deal"><button class="on">Аренда</button><button>Продажа</button></span>`;
+$('types').onclick=e=>{const b=e.target.closest('button[data-t]');if(!b)return;st.t=b.dataset.t;st.sel=null;[...$('types').querySelectorAll('[data-t]')].forEach(x=>x.classList.toggle('on',x===b));renderF();render()};
+$('deal').onclick=e=>{const b=e.target.closest('button');if(!b)return;[...$('deal').children].forEach(x=>x.classList.toggle('on',x===b));st.deal=b.textContent;render()};
+function renderF(){const T=TYPES[st.t];$('flt').innerHTML=`<div><h4>Площадь от, м²: <span class="v" id="av">${st.minA}</span></h4><input type="range" id="ar" min="0" max="${st.t==='Участки'?3000:st.t==='Склады'?1500:200}" step="10" value="${st.minA}"></div>
+ <div><h4>Район</h4><div class="spec"><select id="dist"><option>Все районы</option>${DIST.map(d=>`<option>${d}</option>`).join('')}</select></div></div>
+ <div><h4>Параметры типа «${st.t}»</h4><div class="spec">${T.f.map(([n,o])=>o?`<select aria-label="${n}"><option>${n}: любой</option>${o.map(x=>`<option>${x}</option>`).join('')}</select>`:`<label><input type="checkbox"> ${n}</label>`).join('')}</div></div>
+ <label class="chk"><input type="checkbox" id="ver"> Сначала проверенные собственником</label>
+ <div class="save">🔔 Сохранить поиск - пришлём новые объекты в Telegram и на почту</div>`;
+ $('ar').oninput=e=>{st.minA=+e.target.value;$('av').textContent=st.minA;render()};$('dist').onchange=render;$('ver').onchange=e=>{st.ver=e.target.checked;render()}}
+function img(t,i){const c=['#c9c4b8','#b9c2c6','#cbbfae','#bfc8b2'][TYPES[t].img];return `<svg viewBox="0 0 150 110" preserveAspectRatio="xMidYMid slice"><rect width="150" height="110" fill="${c}"/><rect x="${20+i*5}" y="30" width="80" height="70" fill="#fff" opacity=".55"/><rect x="${30+i*5}" y="45" width="18" height="18" fill="#16181a" opacity=".25"/><rect x="${58+i*5}" y="45" width="18" height="18" fill="#16181a" opacity=".25"/></svg>`}
+const fmt=n=>Math.round(n).toLocaleString('ru-RU');
+function render(){const d=$('dist')?$('dist').value:'Все районы';let L=OBJ.filter(o=>o.t===st.t&&o.deal===st.deal&&o.area>=st.minA&&(d==='Все районы'||o.d===d));if(st.ver)L.sort((a,b)=>b.ver-a.ver);
+ $('cnt').textContent=`Найдено: ${L.length}`;
+ $('list').innerHTML=L.map((o,i)=>{const month=o.m2*o.area;return `<div class="card${st.sel===o.id?' on':''}" data-id="${o.id}"><div class="ph">${img(o.t,i)}${o.ver?'<span class="badge">Проверен</span>':''}</div><div class="bd"><b>${o.n}, ${fmt(o.area)} м²</b><div class="pr">${st.deal==='Аренда'?fmt(month)+' ₽/мес':fmt(o.m2*o.area*70)+' ₽'}</div><small>${st.deal==='Аренда'?fmt(o.m2)+' ₽/м² в месяц':fmt(o.m2*70)+' ₽ за м²'} · ${o.d}</small><div class="tags"><span>${o.metro} мин до метро</span>${TYPES[o.t].f.slice(0,1).map(f=>`<span>${f[0]}</span>`).join('')}</div></div></div>`}).join('')||'<p class="cnt">Нет объектов - расширьте фильтры или сохраните поиск.</p>';
+ drawMap(L)}
+function drawMap(L){let s='<rect width="600" height="700" fill="#e8e6df"/><path d="M0 380 C150 340 260 420 380 360 S560 300 600 330" stroke="#a9c6dd" stroke-width="38" fill="none"/><path d="M220 0 C240 160 300 260 290 700" stroke="#a9c6dd" stroke-width="26" fill="none" opacity=".8"/>';
+ [[120,240,'Московская'],[260,300,'Чкаловская'],[330,470,'Горьковская'],[420,520,'Площадь Минина']].forEach(([x,y,n])=>s+=`<circle cx="${x}" cy="${y}" r="7" fill="#fff" stroke="#1b4fa0" stroke-width="3"/><text class="metro" x="${x+10}" y="${y+4}">${n}</text>`);
+ L.forEach(o=>s+=`<g class="pin${st.sel===o.id?' on':''}" data-id="${o.id}"><circle cx="${o.x}" cy="${o.y}" r="${st.sel===o.id?15:11}" fill="#16181a" stroke="#fff" stroke-width="3"/></g>`);
+ $('msvg').innerHTML=s}
+function select(i){st.sel=i;render();const o=OBJ.find(x=>x.id===i);const month=o.m2*o.area;
+ $('obj').innerHTML=`<h3>${o.n}, ${fmt(o.area)} м²</h3><small style="color:var(--mut)">${o.d} район · ${o.metro} мин до метро${o.ver?' · проверен собственником':''}</small><div class="row"><div><span>За месяц</span>${fmt(month)} ₽</div><div><span>За м²</span>${fmt(o.m2)} ₽</div><div><span>Площадь</span>${fmt(o.area)} м²</div></div><div class="act"><button class="btn">Записаться на просмотр</button><button class="btn l">Написать владельцу</button></div>`;$('obj').classList.add('show')}
+$('list').onclick=e=>{const c=e.target.closest('.card');if(c)select(+c.dataset.id)};
+$('msvg').onclick=e=>{const g=e.target.closest('.pin');if(g)select(+g.dataset.id)};
+renderF();render();
+</script>
+</body>
+</html>
